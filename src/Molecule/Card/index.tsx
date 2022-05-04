@@ -1,6 +1,8 @@
 import React from "react";
 import { PokemonDetails } from "../../lib/usePokemonDetail";
 
+import style from './index.module.scss';
+
 function Card({
   name,
   image,
@@ -9,7 +11,7 @@ function Card({
   height,
 }: PokemonDetails): JSX.Element {
   return (
-    <div className="card">
+    <div className={`card ${style.cardBlock}`}>
         <img src={image} className="card-img-top" alt={name} loading="lazy" />
         <div className="card-body">
           <h5 className="card-title">{name}</h5>

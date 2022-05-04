@@ -28,10 +28,6 @@ type APIResponseData = {
   };
 };
 
-// type APIResopnse = {
-//   data: APIResponseData;
-// };
-
 function usePokemonDetail(url: string) {
   const [data, setData] = useState<PokemonDetails>();
   const [loading, setloading] = useState<boolean>(false);
