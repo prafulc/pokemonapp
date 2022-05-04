@@ -1,11 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-interface PokemonData {
+export interface PokemonURLDetail {
+  name: string;
+  url: string;
+}
+
+export interface PokemonData {
   count: number;
   next: string | null;
   previous: string | null;
-  results: any[];
+  results: PokemonURLDetail[];
+}
+
+export type PokemonListResponse = {
+  data: PokemonData | undefined,
+  loading: boolean
 }
 
 function usePokemonGetAPI(url: string) {

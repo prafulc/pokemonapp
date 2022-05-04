@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
 import Pagination from "../../Organism/Pagination";
-import { usePokemonGetAPI } from "../../lib/usePokemonGetAPI";
+import {
+  PokemonListResponse,
+  PokemonURLDetail,
+  usePokemonGetAPI,
+} from "../../lib/usePokemonGetAPI";
+import PokemonCard from "../../Organism/PokemonCard";
 
 const HomePage = (): JSX.Element => {
   const [limit, setLimit] = useState(20);
   const [url, setUrl] = useState("pokemon?limit=20&offset=0");
-  let { data, loading } = usePokemonGetAPI(url);
+  const { data, loading }: PokemonListResponse = usePokemonGetAPI(url);
 
   const handlePaginationAction = (type: string, value: number) => {
     if (type === "SETLIMIT") {
@@ -29,31 +34,18 @@ const HomePage = (): JSX.Element => {
       <div className="col-12">
         <Pagination limit={limit} handleChange={handlePaginationAction} />
       </div>
-      <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-        {!!!loading ? (
-          <div className="card">
-            <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png"
-              className="card-img-top"
-              alt="..."
-              loading="lazy"
-            />
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Go somewhere
-              </a>
-            </div>
-          </div>
+      {!!!loading ? (
+        data ? (
+          data.results.map((pokemon: PokemonURLDetail) => (
+            <PokemonCard key={pokemon.name} {...pokemon} />
+          ))
         ) : (
-          <>L O A D I N G . . . </>
-        )}
-      </div>
-      <div className="col-12">
+          <>Sorry! Pokemon Not Found</>
+        )
+      ) : (
+        <>L O A D I N G . . . </>
+      )}
+      <div className="col-12" style={{ marginBottom: 20 }}>
         <Pagination limit={limit} handleChange={handlePaginationAction} />
       </div>
     </>
