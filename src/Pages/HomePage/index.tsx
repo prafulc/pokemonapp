@@ -12,9 +12,9 @@ const HomePage = (): JSX.Element => {
   const [url, setUrl] = useState("pokemon?limit=20&offset=0");
   const { data, loading }: PokemonListResponse = usePokemonGetAPI(url);
 
-  const handlePaginationAction = (type: string, value: number) => {
+  const handlePaginationAction = (type: string, value?: number | string): void => {
     if (type === "SETLIMIT") {
-      setLimit(value);
+      setLimit(Number(value));
       setUrl(`pokemon?limit=${value}&offset=0`);
     }
     if (type === "PREVIOUSPAGE") {
