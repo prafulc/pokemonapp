@@ -13,7 +13,11 @@ function PokemonCard({ name, image, height, weight, abilities, url }: PokemonDet
   }
 
   return (
-    <div className={`col-12 col-sm-6 col-md-4 col-lg-3 ${style.cardBox}`} onClick={handleClick}>
+    <div 
+      className={`col-12 col-sm-6 col-md-4 col-lg-3 ${style.cardBox}`} 
+      onClick={handleClick}
+      data-testid="cardBox"
+    >
       <Card
         name={name}
         image={image}

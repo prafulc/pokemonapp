@@ -1,9 +1,10 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Card from "./index";
+import { PokemonDetails } from "../../lib/usePokemonGetAPI";
 
 describe("Load Card Component", () => {
-  const cardData = {
+  const cardData: PokemonDetails = {
     abilities: ["illuminate", "natural-cure", "analytic"],
     height: 11,
     image:
