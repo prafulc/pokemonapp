@@ -35,7 +35,7 @@ const HomePage = (): JSX.Element => {
         <Pagination limit={limit} handleChange={handlePaginationAction} />
       </div>
       {!!!loading ? (
-        data ? (
+        data && data.count ? (
           <PokemonGrid data={data.results} />
         ) : (
           <>Sorry! Pokemon Not Found</>
@@ -44,7 +44,7 @@ const HomePage = (): JSX.Element => {
         <>L O A D I N G . . . </>
       )}
       <div className="col-12" style={{ marginBottom: 20 }}>
-        <Pagination limit={limit} handleChange={handlePaginationAction} />
+        <Pagination limit={limit} handleChange={handlePaginationAction}/>
       </div>
     </>
   );
