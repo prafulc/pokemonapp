@@ -2,11 +2,12 @@
 
 ## Running App
 
-> Git clone https://github.com/prafulc/pokemonapp.git
+> Git clone `https://github.com/prafulc/pokemonapp.git`
 > cd into the directory pokemonapp
 > npm install
 > npm start
+> Goto browser `http://localhost:3000/` for homepage and `http://localhost:3000/2` for `ivysaur` detail page
 
-## Note
+## Unit Testing
 
-Application is not complete. Haven't written any test cases because of time crunch.
+> npm run test
