@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 
 import HomePage from "./index";
-import { PokemonDetails, PokemonListResponse } from "../../lib/usePokemonGetAPI";
+import { PokemonListResponse } from "../../lib/usePokemonGetAPI";
 
 const mockResponse: PokemonListResponse = {
   data: { count: 0, next: "next-url", previous: "previous-url", results: [] },
