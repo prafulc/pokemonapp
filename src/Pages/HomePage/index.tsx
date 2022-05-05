@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import Pagination from "../../Organism/Pagination";
 import {
   PokemonListResponse,
-  PokemonURLDetail,
   usePokemonGetAPI,
 } from "../../lib/usePokemonGetAPI";
-import PokemonCard from "../../Organism/PokemonCard";
+import PokemonGrid from "../../Organism/PokemonGrid";
 
 const HomePage = (): JSX.Element => {
   const [limit, setLimit] = useState(20);
@@ -29,6 +28,7 @@ const HomePage = (): JSX.Element => {
       }
     }
   };
+  
   return (
     <>
       <div className="col-12">
@@ -36,9 +36,7 @@ const HomePage = (): JSX.Element => {
       </div>
       {!!!loading ? (
         data ? (
-          data.results.map((pokemon: PokemonURLDetail) => (
-            <PokemonCard key={pokemon.name} {...pokemon} />
-          ))
+          <PokemonGrid data={data.results} />
         ) : (
           <>Sorry! Pokemon Not Found</>
         )
