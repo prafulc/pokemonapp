@@ -2,12 +2,12 @@ import React from "react";
 
 interface Props {
   limit: number;
-  handleChange: any;
+  handleChange: (type: string, value?: number | string) => void;
 }
 
 const Pagination = ({
-  limit,
-  handleChange,
+  limit = 20,
+  handleChange = () => {},
 }: Props): JSX.Element => {
   return (
     <div className="row align-items-start">
@@ -24,6 +24,7 @@ const Pagination = ({
         <select
           className="form-select"
           value={limit}
+          data-testid="limit"
           onChange={(e) => {
             handleChange("SETLIMIT", e.target.value);
           }}
